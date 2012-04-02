@@ -7,9 +7,9 @@ theme = {}
 theme.font          = "terminus 6"
 
 theme.bg_normal     = "#000000"
-theme.bg_focus      = "#090909"
+theme.bg_focus      = "#151515"
 theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#000000"
+theme.bg_minimize   = "#090909"
 
 theme.fg_normal     = "#00CC00"
 theme.fg_focus      = "#00CC00"
@@ -75,7 +75,7 @@ theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/defau
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
 -- You can use your own command to set your wallpaper
-theme.wallpaper_cmd = { "awsetbg -a /home/athetius/.wallpaper" }
+theme.wallpaper_cmd = { "nitrogen --restore" }
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"

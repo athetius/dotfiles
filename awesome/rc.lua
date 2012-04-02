@@ -19,7 +19,7 @@ beautiful.init("/home/athetius/.config/awesome/themes/hacker/theme.lua")
 
 
 -- This is used later as the default terminal and editor to run.
-terminal = "terminal"
+terminal = "urxvt -bc"
 editor = os.getenv("EDITOR") or "emacs"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -66,6 +66,9 @@ end
 -- Icons
 spacerwidget = widget({ type = "imagebox" })
 spacerwidget.image = image("/home/athetius/.config/awesome/spacer.png")
+spacer2widget = widget({ type = "textbox"})
+spacer2widget.text = " "
+spacer2widget.width = 0
 baticon = widget({ type = "imagebox" })
 baticon.image = image("/home/athetius/.config/awesome/icons/bat.png")
 volicon = widget({ type = "imagebox" })
@@ -152,14 +155,14 @@ weatherwidget = widget({ type = "textbox" })
 --        end
 --    end, 60, "KMQY" )
 
-vicious.register(weatherwidget, vicious.widgets.weather, '${sky}' ..  ", " .. '${tempc}' .. "Â°C " .. '${windkmh}' .. 'km/h' .. " ", 3600, "KMQY")
+vicious.register(weatherwidget, vicious.widgets.weather, '${sky}' ..  ", " .. '${tempc}' .. "°C " .. '${windkmh}' .. 'km/h' .. " ", 3600, "KMQY")
 vicious.register(batwidget, vicious.widgets.bat, '$1' .. '$2' .. "% ", 3, 'BAT1')
 vicious.register(wifiwidget, vicious.widgets.wifi, '${ssid}' .. " " .. '${linp}%' .. " ", 1, 'wlan0')
 vicious.register(pkgwidget, vicious.widgets.pkg, '$1 ', 3600 ,"Arch")
 vicious.register(diskwidget, vicious.widgets.fs, '/ ${/ avail_gb}GB' .. " home " .. '${/home avail_gb}GB ', 15)
 -- Create a textclock widget
 --require ("bottomwidgets")
-mytextclock = awful.widget.textclock({ align = "right" }, " %a %b %d, %I:%M%p ")
+mytextclock = awful.widget.textclock({ align = "right" }, " %a %d %b %I:%M%p ")
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -237,6 +240,7 @@ for s = 1, screen.count() do
         {
             mytaglist[s],
             spacerwidget,
+	    spacer2widget,
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
         }, 
@@ -356,6 +360,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+	awful.key({ modkey,           }, "e",      function () awful.util.spawn(emacs)    end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -458,8 +463,9 @@ awful.rules.rules = {
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = true,
+		     size_hints_honor = false,
                      keys = clientkeys,
-                     buttons = clientbuttons } },
+                     buttons = clientbuttons} },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
