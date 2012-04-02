@@ -22,3 +22,4 @@ set linebreak
 set nolist
 colorscheme murphy
 syn on
+set number
