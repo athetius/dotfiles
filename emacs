@@ -71,5 +71,11 @@
 (setq mail-source-directory "~/mail/")
 (setq nntp-marks-directory "~/news/marks/")
 (setq mail-archive-file-name "~/mail/archive")
+(setq gnus-message-archive-method '(nnfolder "archive"
+	  							   (nnfolder-directory "~/mail/archive")
+								   (nnfolder-active-file "~/mail/archive/active")
+								   (nnfolder-get-new-mail nil)
+								   (nnfolder-inhibit-expiry t)))
+(setq user-mail-address "heimdal@athetius.com")
 ;;server
 ;;(server-start)
