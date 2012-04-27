@@ -1,1 +1,0 @@
-/home/athetius/.emacs.d
