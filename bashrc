@@ -5,6 +5,7 @@ export QT_IM_MODULE="ibus"
 export PYTHONDOCS="/usr/share/doc/python/html/"
 export PYTHON2DOCS="/usr/share/doc/python2/html/"
 export EDITOR="emacsedit"
+export GIT_EDITOR="emacsclient -c"
 HISTFILESIZE=-1
 HISTCONTROL=ignoredups
 #PROMPT_COMMAND='date +%I:%M:%S'
