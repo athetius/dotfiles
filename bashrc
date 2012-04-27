@@ -52,27 +52,11 @@ myip=`lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | s
 echo "${myip}"
 echo "---------------------------------------------------"
 }
-define ()
-{
-lynx -dump "http://www.google.com/search?hl=en&q=define%3A+${1}&btnG=Google+Search" | grep -m 3 -w "*"  | sed 's/;/ -/g' | cut -d- -f1 > /tmp/templookup.txt
-if [[ -s  /tmp/templookup.txt ]] ;then
-until ! read response
-do
-echo "${response}"
-done < /tmp/templookup.txt
-else
-echo "Sorry $USER, I can't find the term \"${1} \""
-fi
-\rm -f /tmp/templookup.txt
-}
 calc(){ 
     echo "$*" | bc -l;
 }
-
-#PS1='[\u@\h \W]\$ '
 PS1='\[\e[0;37m\]\!\[\e[m\]\[\e[0;32m\][\u@\H]\[\e[m\]\[\e[0;31m\]\D{%I:%M:%S}\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\n\[\e[0;32m\]>\[\e[m\]'
 fortune
 echo -e '\e[0;23m'
 date +"EPOCH:%s LOCAL:%a %d.%m.%Y %I:%M:%S%p %z"
 echo -e '\e[m'
-#echo "Wenn mann gegen mann, die machine gewinnen"
