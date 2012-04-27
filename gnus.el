@@ -14,15 +14,9 @@
       smtpmail-local-domain nil)
 (setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
 ;; MTSU email config
-;;(setq gnus-secondary-select-methods '((nnimap "MTMAIL"
-;;					      (nnimap-address "pod51004.outlook.com")
-;;					      (nnimap-server-port "993")
-;;					      (nnimap-stream ssl))))
 ;; GMANE USENSET config
 (add-to-list 'gnus-secondary-select-methods '(nntp "news.gmane.org"))
 (add-to-list 'gnus-secondary-select-methods '(nntp "nntp.aioe.org"))
-;; Slashdot
-;(add-to-list 'gnus-secondary-select-methods '(nnslashdot ""))
 ;; ATOM to RSS
 (require 'mm-url)
 (defadvice mm-url-insert (after DE-convert-atom-to-rss () )
