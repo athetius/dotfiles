@@ -11,7 +11,7 @@ require("vicious")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/athetius/.config/awesome/themes/hacker/theme.lua")
+beautiful.init("$HOME/.config/awesome/themes/hacker/theme.lua")
 --Special stuff
 --awful.placement.no_overlap(c)
 --awful.placement.no_offscreen(c)
@@ -19,7 +19,7 @@ beautiful.init("/home/athetius/.config/awesome/themes/hacker/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt -bc"
-editor = os.getenv("EDITOR") or "emacseditnw"
+editor = os.getenv("EDITOR") or "emacs"
 editor_cmd = terminal .. " -e " .. editor
 -- }}}
 -- Default modkey.
