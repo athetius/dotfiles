@@ -48,7 +48,6 @@ wifiwidget = widget({ type = "textbox" })
 --pkgwidget = widget({ type = "textbox"})
 diskwidget = widget({ type = "textbox"})
 mailwidget = widget({ type = "textbox"})
-weatherwidget = widget({ type = "textbox"})
 -- Register Widgets
 vicious.register(uptimewidget, vicious.widgets.uptime, "$1" .. "d " .. "$2" .. "h " .. "$3" .. "m ")
 vicious.register(mpdwidget, vicious.widgets.mpd,
@@ -70,9 +69,9 @@ vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
 vicious.register(volwidget, vicious.widgets.volume,
 function (widget, args)
 if args[1] == 0 or args[2] == "♩" then
-return "mute" .. " "
+return ""  .. "mute" .. ""
 else
-return args[1] .. "% "
+return ""  .. args[1] .. "% " .. ""
 end
 end, 2, "Master" )
 --volwidget:buttons(
@@ -83,6 +82,18 @@ end, 2, "Master" )
 --awful.button({ }, 5, function () awful.util.spawn("amixer -q sset Master 2dB-") end)
 --)
 --)
+weatherwidget = widget({ type = "textbox" })
+--    vicious.register(weatherwidget, vicious.widgets.weather,
+--    function (widget, args)
+--        if args["{tempc}"] == "N/A" then
+--            return " No Info "
+--        else
+--            weatherwidget:add_signal('mouse::enter', function () weather_n = { naughty.notify({ title = "" ..  "âââââââââââââ Weather âââââââââââââ" .. coldef .. "", text = "" .. colbblu .. "Wind    : " .. args["{windmph}"] .. " mph " .. args["{wind}"] .. "\nHumidity: " .. args["{humid}"] .. " %\nPressure: " .. args["{press}"] .. " hPa" .. coldef .. "", border_color = "#1a1a1a", timeout = 0, hover_timeout = 0.5 }) } end)
+--           weatherwidget:add_signal('mouse::leave', function () naughty.destroy(weather_n[1]) end)
+--	   return args["{sky}"] .. ", " .. args["{tempc}"] .. "Â°C " .. args["{windkph}"] .. args["{wind}"] .. " "
+--        end
+--    end, 60, "KMQY" )
+
 vicious.register(weatherwidget, vicious.widgets.weather, '${sky}' ..  ", " .. '${tempc}' .. "°C " .. '${windkmh}' .. 'km/h' .. " ", 3600, "KMQY")
 vicious.register(batwidget, vicious.widgets.bat, '$1' .. '$2' .. "% ", 3, 'BAT1')
 vicious.register(wifiwidget, vicious.widgets.wifi, '${ssid}' .. " " .. '${linp}%' .. " ", 1, 'wlan0')
@@ -91,16 +102,16 @@ vicious.register(diskwidget, vicious.widgets.fs, '/ ${/ avail_gb}GB' .. " home "
 vicious.register(mailwidget, vicious.widgets.mdir, 
 	function (widget, args)
 	local total = args[1] + args[2]
-	if args[1] > 5 
+	if total > 0 
 	then
 		awful.util.spawn_with_shell('aplay ~/.themes/dothack/mail.wav')
 	end
-	return total .. ' '
+	return ' ' .. total .. ' '
 	end
-, 120, { '/home/athetius/mail/main/INBOX', '/home/athetius/mail/mtmail/INBOX', '/home/athetius/mail/main/NLUG', '/home/athetius/mail/work/INBOX', '/home/athetius/mail/equalintl/INBOX' })
+, 60, { '/home/athetius/mail/main/INBOX', '/home/athetius/mail/mtmail/INBOX', '/home/athetius/mail/main/NLUG', '/home/athetius/mail/work/INBOX' })
 -- Create a textclock widget
 --require ("bottomwidgets")
-mytextclock = awful.widget.textclock({ align = "right" }, " %a %d %b %H.%M %p ")
+mytextclock = awful.widget.textclock({ align = "right" }, " %a %d %b %H.%M ")
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -196,9 +207,9 @@ for s = 1, screen.count() do
         spacerwidget,
         wifiwidget,
         wifiicon,
-	    spacerwidget,
-	    mailwidget,
-	    mailicon,
+	spacerwidget,
+	mailwidget,
+	mailicon,
         spacerwidget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft

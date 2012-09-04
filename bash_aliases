@@ -1,9 +1,7 @@
 alias suvim="sudo vim"
-alias musicvlc="nvlc --browse-dir $HOME/Music"
 alias music="ncmpcpp"
-alias ..='cd ..'
-alias ...=".. && .."
-alias ....="... && .."
+alias ...=".. ; .."
+alias ....=".. ; .. ; .."
 alias ~="cd $HOME"
 alias ls='ls --color=auto'
 alias dir='ls --color=auto -Alh'
@@ -12,13 +10,16 @@ alias fgrep='fgrep --color=auto'
 alias agrep='egrep --color=auto'
 alias cal='cal -m'
 alias epoch='date +"EPOCH: %s"'
-alias daysleft='echo "There are $(($(date -d"De 31, $(date +%Y)")-$date +%j))) left in year $(date +%Y)."'
-alias beep='beep -f 5000 -l 50 -r 2'
-alias todo="todo.sh"
-alias mail="mutt"
+alias daysleft='echo "There are $(($(date -d"Dec 31, $(date +%Y)" +%j)-$(date +%j))) days left in year $(date +%Y)."'
 alias go="gnugo"
 alias halt="sudo halt"
+alias reboot="sudo reboot"
+alias update="sudo emerge --sync"
+alias upgrade="sudo emerge --update --ask --deep --newuse --verbose --with-bdeps=y world"
 alias irc="irssi"
-alias pacman="sudo pacman-color"
-alias update="pacman -Syu"
-alias youtube-music="youtube-dl -t --extract-audio --audio-format vorbis"
+alias xdosbox="startx /usr/games/bin/dosbox :1"
+alias mplayercaca="mplayer2 -vo caca"
+alias imageview="sxiv -r"
+alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
+alias news="newsbeuter"
+alias podcast="podbeuter"

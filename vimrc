@@ -20,6 +20,5 @@ set termencoding=utf-8
 set wrap
 set linebreak
 set nolist
-colorscheme murphy
 syn on
 set number

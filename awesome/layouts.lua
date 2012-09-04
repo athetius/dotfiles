@@ -25,8 +25,10 @@ for s = 1, screen.count() do
 --						{ layouts[2], layouts[2], layouts[1], --haupt,dev,www
 --					      layouts[2], layouts[2], layouts[1]  --irc,post,sonst
 --						})
-   tags[s] = awful.tag({ "haupt", "dev", "www", "sonst" }, s,
-					   { layouts[2], layouts[2], layouts[2], layouts[1]})
+--   tags[s] = awful.tag({ "haupt", "dev", "www", "sonst" }, s,
+--					   { layouts[2], layouts[2], layouts[2], layouts[1]})
+     tags[s] = awful.tag({ "一", "二", "三", "四", "五" }, s,
+					   { layouts[2], layouts[2], layouts[2], layouts[1], layouts[2]})
 end
 -- }}}
 -- {{{ Rules
@@ -53,7 +55,9 @@ awful.rules.rules = {
     { rule = { class = "Thunderbird" },
       properties = { tag = tags[1][4] } },
     { rule = { class = "luakit" },
-      properties = { tag = tags[1][3] } }
+      properties = { tag = tags[1][3] } },
+    { rule = { class = "rdesktop" },
+      properties = { floating = false}  }
 }
 -- }}}
 

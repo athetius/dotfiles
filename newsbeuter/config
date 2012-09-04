@@ -1,0 +1,4 @@
+browser "w3m %u"
+download-path "~/datei/podcasts/%n"
+max-downloads 3
+player mplayer

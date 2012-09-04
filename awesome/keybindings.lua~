@@ -41,10 +41,8 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal)   end),
 	awful.key({ modkey,           }, "e",      function () awful.util.spawn("emacsclient -c")    end),
-	awful.key({ modkey, "Shift"   }, "e",      function () awful.util.spawn("/usr/bin/emacs")    end),
+	awful.key({ modkey, "Shift"   }, "e",      function () awful.util.spawn("emacs")    end),
 	awful.key({ modkey,           }, "c",      function () awful.util.spawn("chromium") end),
-	awful.key({ modkey,           }, "f",      function () awful.util.spawn("firefox")  end),
-	awful.key({ modkey,	      }, "t",	   function () awful.util.spawn("thunar")   end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
